@@ -1,0 +1,37 @@
+{
+  "title": "About Cypher Plugin",
+  "story": [
+  {
+    "type": "paragraph",
+    "id": "085791931456c461",
+    "text": "Here we describe the purpose of the plugin and include a sample."
+  },
+  {
+    "type": "cypher",
+    "id": "4bc524d36e79bcc0",
+    "text": "This is text in the new plugin. You can *double-click* to edit it too."
+  }
+],
+  "journal": [
+  {
+    "type": "create",
+    "item": {
+      "title": "About Cypher Plugin",
+      "story": [
+  {
+    "type": "paragraph",
+    "id": "085791931456c461",
+    "text": "Here we describe the purpose of the plugin and include a sample."
+  },
+  {
+    "type": "cypher",
+    "id": "4bc524d36e79bcc0",
+    "text": "This is text in the new plugin. You can *double-click* to edit it too."
+  }
+]
+    },
+    "date": 1453677732000,
+    "certificate": "from mkplugin.sh"
+  }
+]
+}
