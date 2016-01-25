@@ -17,11 +17,13 @@ emit = ($item, item) ->
 
 bind = ($item, item) ->
   $item.dblclick -> wiki.textEditor $item, item
+  json = (string) ->
+    JSON.stringify (JSON.parse string), null, '  '
   report = (reply) ->
     $item.find('div').append """
       <div class="reply" style="background-color:#fff; padding: 10px;">
         <pre style='font-size: 10px; word-wrap: break-word; color: #d00'>#{expand reply.stderr}</pre>
-        <pre style='font-size: 10px; word-wrap: break-word;'>#{expand reply.stdout}</pre>
+        <pre style='font-size: 10px; word-wrap: break-word;'>#{expand json reply.stdout}</pre>
       </div>
     """
   $item.find('button').click ->
