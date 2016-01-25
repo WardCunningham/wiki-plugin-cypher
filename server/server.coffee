@@ -12,14 +12,26 @@ cypher = (statement, parameters, done) ->
   request.post options, (err, res) ->
     done err, res.body
 
+statement = "
+  match
+    (site:Site)-[h:HAS]->
+    (page:Page)-[l:LINK]->
+    (link:Title)<-[i:IS]-(p:Page)
+    where p.title in {slugs}
+    with site,page,link
+  match
+    (page)-[KNOWS]->(here)
+    where here.title in {sites}
+    return page.title,site.title,link.title
+"
+
 startServer = (params) ->
   params.app.post '/plugin/cypher', (req, res) ->
-    query = 'match (a)-->(b) return a.title, b.title limit 10'
-    params = {"foo": "bar"}
-    cypher query, params, (err, body) ->
+    console.log JSON.stringify(req.body)
+    cypher statement, req.body, (err, body) ->
       res.send
+        results: body.results || []
         stdout: JSON.stringify(body)
-        stderr: JSON.stringify(err)
-        req: req.body
+        stderr: JSON.stringify({http: err, neo4j: body.errors})
 
 module.exports = {startServer}
