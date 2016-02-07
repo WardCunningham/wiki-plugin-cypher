@@ -20,7 +20,7 @@ statement = "
     where p.title in {slugs}
     with site,page,link
   match
-    (page)-[KNOWS]->(here)
+    (page)-[:KNOWS]->(here:Site)
     where here.title in {sites}
     return page.title,site.title,link.title
 "
